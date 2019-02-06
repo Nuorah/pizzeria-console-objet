@@ -46,16 +46,16 @@ public class PizzeriaAdminConsoleApp {
 				String code;
 				String libelle;
 				double price;
-				
+
 				System.out.println("Please write the code : ");
 				code = userChoice.nextLine();
-				
+
 				System.out.println("Please write the name : ");
 				libelle = userChoice.nextLine();
-				
+
 				System.out.println("Please write the price : ");
 				price = userChoice.nextDouble();
-				
+
 				Pizza[] pizzaArrayTemp = new Pizza[pizzaArray.length + 1];
 				for(int i = 0; i < pizzaArray.length; i++){
 					pizzaArrayTemp[i] = pizzaArray[i];
@@ -68,10 +68,10 @@ public class PizzeriaAdminConsoleApp {
 				boolean found = false;
 				int index = -1;
 				int id = -1;
-				
+
 				System.out.println("Chose the code of the pizza to modify");
 				codeChosen = userChoice.nextLine();
-				
+
 				for(int i = 0; i < pizzaArray.length; i++){
 					if(pizzaArray[i].getCode().equals(codeChosen)){
 						found = true;
@@ -81,26 +81,58 @@ public class PizzeriaAdminConsoleApp {
 					}
 				}
 				if (found){
-					
+
 					System.out.println("Please write the code : ");
 					code = userChoice.nextLine();
-					
+
 					System.out.println("Please write the name : ");
 					libelle = userChoice.nextLine();
-					
+
 					System.out.println("Please write the price : ");
 					price = userChoice.nextDouble();
-					
+
 					pizzaArray[index] = new Pizza(id, code, libelle, price);
-					
+
 				} else {
 					System.out.println("This pizza doesn't exist.");
 					break;
 				}
-				
+
 				break;
-			case 4:
-				System.out.println("Delete a pizza");
+			case 4:				
+				codeChosen = "";
+				found = false;
+				index = -1;
+
+				System.out.println("Chose the code of the pizza to delete : ");
+				codeChosen = userChoice.nextLine();
+
+				for(int i = 0; i < pizzaArray.length; i++){
+					if(pizzaArray[i].getCode().equals(codeChosen)){
+						found = true;
+						index = i;
+						break;
+					}
+				}
+
+				if(found){
+					pizzaArrayTemp = new Pizza[pizzaArray.length - 1];
+
+					for(int i = 0; i < pizzaArray.length; i++){
+						if(i < index){
+							pizzaArrayTemp[i] = pizzaArray[i];
+						} else if (i > index){
+							pizzaArrayTemp[i-1] = pizzaArray[i];
+						}
+					}
+					pizzaArray = pizzaArrayTemp;
+					
+					System.out.println("Pizza " + codeChosen + " has been deleted.");
+				} else {
+					System.out.println("This pizza doesn't exist.");
+					break;
+				}
+
 				break;
 			default:
 				break;
