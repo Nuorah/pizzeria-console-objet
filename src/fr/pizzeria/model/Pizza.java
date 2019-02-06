@@ -23,4 +23,8 @@ public class Pizza {
 		this.libelle = libelle;
 		this.prix = prix;
 	}
+	
+	public String toString(){
+		return code + " -> " + libelle + " (" + prix + "€)";
+	}
 }
