@@ -1,4 +1,4 @@
-package fr.pizzaria.model;
+package fr.pizzeria.model;
 
 public class Pizza {
 	int id;
