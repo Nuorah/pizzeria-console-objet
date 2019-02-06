@@ -5,12 +5,17 @@ import java.util.Scanner;
 import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
-
+	
+	/**
+	 * Main method, launches the menu and allow the user to interact with the list of pizzas.
+	 * @param args No arguments used.
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
+		//Generate a Pizza Array to use in the app.
 		Pizza[] pizzaArray = new Pizza[8];
-
+		
 		pizzaArray[0] = new Pizza("PEP", "Pépéroni", 12.5);
 		pizzaArray[1] = new Pizza("MAR", "Margherita", 14.0);
 		pizzaArray[2] = new Pizza("REIN", "La Reine", 11.5);
@@ -33,9 +38,15 @@ public class PizzeriaAdminConsoleApp {
 
 			choice = userChoice.nextInt();
 			userChoice.nextLine();
-
+			
+			/*
+			 * Menu : if the user types 1, 2, 3, 4, perform the actions, else quit if he types 99,
+			 * else print the menu again.
+			 */
+			
 			switch(choice) {
 			case 1:
+				//Prints the list of Pizzas
 				System.out.println();
 				for(int i = 0; i < pizzaArray.length; i++){
 					System.out.println(pizzaArray[i].toString());
@@ -55,7 +66,11 @@ public class PizzeriaAdminConsoleApp {
 
 				System.out.println("Please write the price : ");
 				price = userChoice.nextDouble();
-
+				
+				/*
+				 * Add a Pizza by looping through the array into an array of length+1 and
+				 * adding the Pizza on the last index
+				 */
 				Pizza[] pizzaArrayTemp = new Pizza[pizzaArray.length + 1];
 				for(int i = 0; i < pizzaArray.length; i++){
 					pizzaArrayTemp[i] = pizzaArray[i];
@@ -71,7 +86,11 @@ public class PizzeriaAdminConsoleApp {
 
 				System.out.println("Chose the code of the pizza to modify");
 				codeChosen = userChoice.nextLine();
-
+				/*
+				 * Go through the array looking for the pizza with the right code, returns
+				 * a message if it's not found. If found, replace the pizza with attributes from
+				 * the input of the user.
+				 */
 				for(int i = 0; i < pizzaArray.length; i++){
 					if(pizzaArray[i].getCode().equals(codeChosen)){
 						found = true;
@@ -106,7 +125,14 @@ public class PizzeriaAdminConsoleApp {
 
 				System.out.println("Chose the code of the pizza to delete : ");
 				codeChosen = userChoice.nextLine();
-
+				
+				/*
+				 * Go through the array looking for the pizza with the right code, returns
+				 * a message if it's not found. If found, go through the array to transfer it 
+				 * into a smaller array of size length-1 minus the index of the Pizza the user
+				 * wants to delete.
+				 */
+				
 				for(int i = 0; i < pizzaArray.length; i++){
 					if(pizzaArray[i].getCode().equals(codeChosen)){
 						found = true;
