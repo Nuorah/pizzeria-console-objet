@@ -24,6 +24,14 @@ public class Pizza {
 		this.prix = prix;
 	}
 	
+	public String getCode(){
+		return this.code;
+	}
+	
+	public int getId(){
+		return this.id;
+	}
+	
 	public String toString(){
 		return code + " -> " + libelle + " (" + prix + "0€)";
 	}

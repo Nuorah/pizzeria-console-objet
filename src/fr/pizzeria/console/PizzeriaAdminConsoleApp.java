@@ -64,7 +64,40 @@ public class PizzeriaAdminConsoleApp {
 				pizzaArray = pizzaArrayTemp;
 				break;
 			case 3:
-				System.out.println("Update a pizza");
+				String codeChosen;
+				boolean found = false;
+				int index = -1;
+				int id = -1;
+				
+				System.out.println("Chose the code of the pizza to modify");
+				codeChosen = userChoice.nextLine();
+				
+				for(int i = 0; i < pizzaArray.length; i++){
+					if(pizzaArray[i].getCode().equals(codeChosen)){
+						found = true;
+						index = i;
+						id = pizzaArray[i].getId();
+						break;
+					}
+				}
+				if (found){
+					
+					System.out.println("Please write the code : ");
+					code = userChoice.nextLine();
+					
+					System.out.println("Please write the name : ");
+					libelle = userChoice.nextLine();
+					
+					System.out.println("Please write the price : ");
+					price = userChoice.nextDouble();
+					
+					pizzaArray[index] = new Pizza(id, code, libelle, price);
+					
+				} else {
+					System.out.println("This pizza doesn't exist.");
+					break;
+				}
+				
 				break;
 			case 4:
 				System.out.println("Delete a pizza");
