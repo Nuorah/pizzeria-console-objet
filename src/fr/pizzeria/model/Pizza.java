@@ -7,7 +7,7 @@ public class Pizza {
 	double prix;
 	static int count = 0;
 	
-	Pizza(String code, String libelle, double prix){
+	public Pizza(String code, String libelle, double prix){
 		
 		id = count;
 		count++;
@@ -17,7 +17,7 @@ public class Pizza {
 		this.prix = prix;
 	}
 	
-	Pizza(int id, String code, String libelle, double prix){
+	public Pizza(int id, String code, String libelle, double prix){
 		this.id = id;
 		this.code = code;
 		this.libelle = libelle;
