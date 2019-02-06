@@ -32,6 +32,7 @@ public class PizzeriaAdminConsoleApp {
 			System.out.println("99.Exit.");
 
 			choice = userChoice.nextInt();
+			userChoice.nextLine();
 
 			switch(choice) {
 			case 1:
@@ -42,7 +43,25 @@ public class PizzeriaAdminConsoleApp {
 				System.out.println();
 				break;
 			case 2:
-				System.out.println("Add a new pizza");
+				String code;
+				String libelle;
+				double price;
+				
+				System.out.println("Please write the code : ");
+				code = userChoice.nextLine();
+				
+				System.out.println("Please write the name : ");
+				libelle = userChoice.nextLine();
+				
+				System.out.println("Please write the price : ");
+				price = userChoice.nextDouble();
+				
+				Pizza[] pizzaArrayTemp = new Pizza[pizzaArray.length + 1];
+				for(int i = 0; i < pizzaArray.length; i++){
+					pizzaArrayTemp[i] = pizzaArray[i];
+				}
+				pizzaArrayTemp[pizzaArray.length] = new Pizza(code, libelle, price);
+				pizzaArray = pizzaArrayTemp;
 				break;
 			case 3:
 				System.out.println("Update a pizza");

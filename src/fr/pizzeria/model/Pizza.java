@@ -25,6 +25,6 @@ public class Pizza {
 	}
 	
 	public String toString(){
-		return code + " -> " + libelle + " (" + prix + "€)";
+		return code + " -> " + libelle + " (" + prix + "0€)";
 	}
 }
