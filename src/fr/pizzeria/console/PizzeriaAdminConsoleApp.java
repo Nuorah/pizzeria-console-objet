@@ -2,6 +2,8 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
+import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
@@ -14,16 +16,8 @@ public class PizzeriaAdminConsoleApp {
 		// TODO Auto-generated method stub
 		
 		//Generate a Pizza Array to use in the app.
-		Pizza[] pizzaArray = new Pizza[8];
 		
-		pizzaArray[0] = new Pizza("PEP", "Pépéroni", 12.5);
-		pizzaArray[1] = new Pizza("MAR", "Margherita", 14.0);
-		pizzaArray[2] = new Pizza("REIN", "La Reine", 11.5);
-		pizzaArray[3] = new Pizza("FRO", "La 4 fromages", 12.0);
-		pizzaArray[4] = new Pizza("CAN", "La cannibale", 12.5);
-		pizzaArray[5] = new Pizza("SAV", "La savoyarde", 13.0);
-		pizzaArray[6] = new Pizza("ORI", "L'orientale", 13.5);
-		pizzaArray[7] = new Pizza("IND", "L'indienne", 14.0);
+		IPizzaDao dao = new PizzaMemDao();
 
 		Scanner userChoice = new Scanner(System.in);
 		int choice = 0;		
@@ -46,10 +40,10 @@ public class PizzeriaAdminConsoleApp {
 			
 			switch(choice) {
 			case 1:
-				//Prints the list of Pizzas
+				Pizza[] allPizzas = dao.findAllPizzas();
 				System.out.println();
-				for(int i = 0; i < pizzaArray.length; i++){
-					System.out.println(pizzaArray[i].toString());
+				for(int i = 0; i < allPizzas.length; i++){
+					System.out.println(allPizzas[i].toString());
 				}
 				System.out.println();
 				break;
