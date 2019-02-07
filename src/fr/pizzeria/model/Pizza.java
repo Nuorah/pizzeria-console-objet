@@ -61,6 +61,10 @@ public class Pizza {
 		return this.id;
 	}
 	
+	public String getLibelle(){
+		return this.libelle;
+	}
+	
 	public String toString(){
 		return code + " -> " + libelle + " (" + prix + "0€)";
 	}
