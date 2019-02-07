@@ -6,7 +6,7 @@ import java.util.List;
 import fr.pizzeria.model.Pizza;
 
 /**
- * Dao for pizzas stored in a Java array.
+ * Dao for pizzas stored in a Java List.
  * @author Haroun
  *
  */
@@ -33,7 +33,6 @@ public class PizzaMemDao implements IPizzaDao {
 
 	@Override
 	public void saveNewPizza(Pizza pizza) {
-
 		this.pizzaList.add(pizza);
 	}
 
@@ -75,7 +74,7 @@ public class PizzaMemDao implements IPizzaDao {
 		if (this.pizzaExists(codePizza)){
 
 			/*
-			 * Loop through the pizza array until it finds a pizza with 
+			 * Loop through the pizza list until it finds a pizza with 
 			 * the code. Then return the pizza.
 			 */
 
@@ -85,7 +84,7 @@ public class PizzaMemDao implements IPizzaDao {
 				}
 			}
 		}
-		//If not return null
+		//If t return null
 		return null;
 	}
 
@@ -96,7 +95,7 @@ public class PizzaMemDao implements IPizzaDao {
 		 * Loop through the pizza list until it finds a pizza with 
 		 * the code. Then return true.
 		 */
-
+		
 		for(Pizza pizza : this.pizzaList){
 			if(pizza.getCode().equals(codePizza)){
 				return true;

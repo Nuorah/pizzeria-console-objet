@@ -4,7 +4,7 @@ package fr.pizzeria.model;
  * @author Diginamic
  *
  */
-public class Pizza {
+public class Pizza implements Comparable<Pizza>{
 	
 	int id;
 	String code;
@@ -66,6 +66,11 @@ public class Pizza {
 	}
 	
 	public String toString(){
-		return code + " -> " + libelle + " (" + prix + "0€)";
+		return this.code + " -> " + this.libelle + " (" + this.prix + "0€)";
+	}
+
+	@Override
+	public int compareTo(Pizza o) {
+		return this.code.compareTo(o.code);
 	}
 }
