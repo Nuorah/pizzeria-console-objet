@@ -20,8 +20,6 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args) {
 
 		IPizzaDao dao = new PizzaMemDao();
-		
-		MenuServiceFactory menuFactory =new MenuServiceFactory();
 
 		Scanner scanner = new Scanner(System.in);		
 
@@ -38,8 +36,8 @@ public class PizzeriaAdminConsoleApp {
 			
 			if (choice == 99){
 				break;
-			} else if (menuFactory.choseOption(choice) != null){
-				menuFactory.choseOption(choice).executeUC(dao, scanner);
+			} else if (MenuServiceFactory.getService(choice) != null){
+				MenuServiceFactory.getService(choice).executeUC(dao, scanner);
 			}
 		}
 		System.out.println("Good bye :'( ");

@@ -6,8 +6,13 @@ package fr.pizzeria.service;
  *
  */
 public class MenuServiceFactory {
-
-	public MenuService choseOption(int choice){
+	
+	/**
+	 * 
+	 * @param choice User choice.
+	 * @return A service that the user requested.
+	 */
+	public static MenuService getService(int choice){
 		switch(choice){
 		case 1:
 			return new ListPizzaService();
