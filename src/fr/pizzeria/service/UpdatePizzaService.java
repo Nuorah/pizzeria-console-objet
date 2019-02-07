@@ -10,7 +10,7 @@ public class UpdatePizzaService extends MenuService {
 	@Override
 	public void executeUC(IPizzaDao dao, Scanner scanner) {
 
-		System.out.println("Chose the code of the pizza to modify");
+		System.out.println("Choose the code of the pizza to modify");
 		String codePizza = scanner.nextLine();				
 
 		System.out.println("Please write the code : ");
