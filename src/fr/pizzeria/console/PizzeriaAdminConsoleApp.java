@@ -75,49 +75,14 @@ public class PizzeriaAdminConsoleApp {
 				System.out.println("Please write the price : ");
 				price = userChoice.nextDouble();
 
-				dao.updatePizza(codePizza, new Pizza(id, code, libelle, price));
+				dao.updatePizza(codePizza, new Pizza(code, libelle, price));
 
 				break;
-			case 4:				
-				codeChosen = "";
-				found = false;
-				index = -1;
-
+			case 4:	
 				System.out.println("Chose the code of the pizza to delete : ");
-				codeChosen = userChoice.nextLine();
+				codePizza = userChoice.nextLine();
 
-				/*
-				 * Go through the array looking for the pizza with the right code, returns
-				 * a message if it's not found. If found, go through the array to transfer it 
-				 * into a smaller array of size length-1 minus the index of the Pizza the user
-				 * wants to delete.
-				 */
-
-				for(int i = 0; i < pizzaArray.length; i++){
-					if(pizzaArray[i].getCode().equals(codeChosen)){
-						found = true;
-						index = i;
-						break;
-					}
-				}
-
-				if(found){
-					pizzaArrayTemp = new Pizza[pizzaArray.length - 1];
-
-					for(int i = 0; i < pizzaArray.length; i++){
-						if(i < index){
-							pizzaArrayTemp[i] = pizzaArray[i];
-						} else if (i > index){
-							pizzaArrayTemp[i-1] = pizzaArray[i];
-						}
-					}
-					pizzaArray = pizzaArrayTemp;
-
-					System.out.println("Pizza " + codeChosen + " has been deleted.");
-				} else {
-					System.out.println("This pizza doesn't exist.");
-					break;
-				}
+				dao.deletePizza(codePizza);
 
 				break;
 			default:

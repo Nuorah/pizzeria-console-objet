@@ -43,7 +43,7 @@ public class PizzaMemDao implements IPizzaDao {
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) {
-		
+
 		if (this.pizzaExists(codePizza)){
 			for(int i = 0; i < this.pizzaArray.length; i++){
 				if (this.pizzaArray[i].equals(this.findPizzaByCode(codePizza))){
@@ -60,7 +60,37 @@ public class PizzaMemDao implements IPizzaDao {
 
 	@Override
 	public void deletePizza(String codePizza) {
-		// TODO Auto-generated method stub
+
+		if (this.pizzaExists(codePizza)){
+
+			Pizza[] pizzaArrayTemp = new Pizza[this.pizzaArray.length - 1];
+			boolean leftOfPizzaInArray = true;
+
+			for(int i = 0; i < this.pizzaArray.length; i++){
+
+				if(this.pizzaArray[i].getCode().equals(codePizza)){
+					leftOfPizzaInArray = false;
+					continue;
+				}
+				
+				if(leftOfPizzaInArray){
+					pizzaArrayTemp[i] = this.pizzaArray[i];
+				} else {
+					pizzaArrayTemp[i-1] = this.pizzaArray[i];
+				}
+			}
+			
+			this.pizzaArray = pizzaArrayTemp;
+			
+			System.out.println();
+			System.out.println("The pizza " + codePizza + " has been deleted.");
+			System.out.println();
+
+		} else {			
+			System.out.println();
+			System.out.println("This pizza doesn't exist.");
+			System.out.println();			
+		}
 
 	}
 
