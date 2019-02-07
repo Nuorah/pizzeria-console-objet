@@ -1,5 +1,8 @@
 package fr.pizzeria.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -9,53 +12,36 @@ import fr.pizzeria.model.Pizza;
  */
 public class PizzaMemDao implements IPizzaDao {
 
-	Pizza[] pizzaArray;
+	List<Pizza> pizzaList;
 
 	public PizzaMemDao() {
-		pizzaArray = new Pizza[8];
-		pizzaArray[0] = new Pizza("PEP", "Pépéroni", 12.5);
-		pizzaArray[1] = new Pizza("MAR", "Margherita", 14.0);
-		pizzaArray[2] = new Pizza("REIN", "La Reine", 11.5);
-		pizzaArray[3] = new Pizza("FRO", "La 4 fromages", 12.0);
-		pizzaArray[4] = new Pizza("CAN", "La cannibale", 12.5);
-		pizzaArray[5] = new Pizza("SAV", "La savoyarde", 13.0);
-		pizzaArray[6] = new Pizza("ORI", "L'orientale", 13.5);
-		pizzaArray[7] = new Pizza("IND", "L'indienne", 14.0);
+		pizzaList = new ArrayList<Pizza>();
+		pizzaList.add(new Pizza("PEP", "Pépéroni", 12.5));
+		pizzaList.add(new Pizza("MAR", "Margherita", 14.0));
+		pizzaList.add(new Pizza("REIN", "La Reine", 11.5));
+		pizzaList.add(new Pizza("FRO", "La 4 fromages", 12.0));
+		pizzaList.add(new Pizza("CAN", "La cannibale", 12.5));
+		pizzaList.add(new Pizza("SAV", "La savoyarde", 13.0));
+		pizzaList.add(new Pizza("ORI", "L'orientale", 13.5));
+		pizzaList.add(new Pizza("IND", "L'indienne", 14.0));
 	}
 
 	@Override
-	public Pizza[] findAllPizzas() {
-		return this.pizzaArray;
+	public List<Pizza> findAllPizzas() {
+		return this.pizzaList;
 	}
 
 	@Override
 	public void saveNewPizza(Pizza pizza) {
 
-		//Temp array to store all pizzas + new pizza.
-		Pizza[] pizzaArrayTemp = new Pizza[this.pizzaArray.length + 1];
-
-		//Adding all old pizzas in the temp array.
-		for(int i = 0; i < this.pizzaArray.length; i++){
-			pizzaArrayTemp[i] = this.pizzaArray[i];
-		}
-
-		//Adding the new pizza to the temp array.
-		pizzaArrayTemp[this.pizzaArray.length] = pizza;
-
-		//Replacing the old pizzaArray.
-		this.pizzaArray = pizzaArrayTemp;
+		this.pizzaList.add(pizza);
 	}
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) {
 		
-		//Loop through the pizzaArray in memory and replace the pizza if it finds it.
 		if (this.pizzaExists(codePizza)){
-			for(int i = 0; i < this.pizzaArray.length; i++){
-				if (this.pizzaArray[i].equals(this.findPizzaByCode(codePizza))){
-					this.pizzaArray[i] = pizza;
-				}
-			}
+			this.pizzaList.set(pizzaList.indexOf(this.findPizzaByCode(codePizza)), pizza);
 		} else {
 			System.out.println();
 			System.out.println("This pizza doesn't exist.");
@@ -69,29 +55,7 @@ public class PizzaMemDao implements IPizzaDao {
 
 		if (this.pizzaExists(codePizza)){
 			
-			//Temp array to move the array minus one pizza.
-			Pizza[] pizzaArrayTemp = new Pizza[this.pizzaArray.length - 1];
-			
-			//Bool to tell where we are in the array comparatively to the index of the pizza to delete.
-			boolean leftOfPizzaInArray = true;
-
-			for(int i = 0; i < this.pizzaArray.length; i++){
-				
-				//Jumps to the next step if we are on the pizza to delete
-				if(this.pizzaArray[i].getCode().equals(codePizza)){
-					leftOfPizzaInArray = false;
-					continue;
-				}
-				
-				//Fill the temp array, different if we are before or after the pizza to delete.
-				if(leftOfPizzaInArray){
-					pizzaArrayTemp[i] = this.pizzaArray[i];
-				} else {
-					pizzaArrayTemp[i-1] = this.pizzaArray[i];
-				}
-			}
-			
-			this.pizzaArray = pizzaArrayTemp;
+			this.pizzaList.remove(this.findPizzaByCode(codePizza));
 			
 			System.out.println();
 			System.out.println("The pizza " + codePizza + " has been deleted.");
@@ -115,9 +79,9 @@ public class PizzaMemDao implements IPizzaDao {
 			 * the code. Then return the pizza.
 			 */
 
-			for(int i = 0; i < this.pizzaArray.length; i++){
-				if(this.pizzaArray[i].getCode().equals(codePizza)){
-					return this.pizzaArray[i];
+			for(Pizza pizza : this.pizzaList){
+				if(pizza.getCode().equals(codePizza)){
+					return pizza;
 				}
 			}
 		}
@@ -129,12 +93,12 @@ public class PizzaMemDao implements IPizzaDao {
 	public boolean pizzaExists(String codePizza) {
 
 		/*
-		 * Loop through the pizza array until it finds a pizza with 
+		 * Loop through the pizza list until it finds a pizza with 
 		 * the code. Then return true.
 		 */
 
-		for(int i = 0; i < this.pizzaArray.length; i++){
-			if(this.pizzaArray[i].getCode().equals(codePizza)){
+		for(Pizza pizza : this.pizzaList){
+			if(pizza.getCode().equals(codePizza)){
 				return true;
 			}
 		}
