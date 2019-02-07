@@ -4,14 +4,13 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMemDao;
-import fr.pizzeria.model.Pizza;
-import fr.pizzeria.service.AddPizzaService;
-import fr.pizzeria.service.DeletePizzaService;
-import fr.pizzeria.service.ListPizzaService;
-import fr.pizzeria.service.MenuService;
 import fr.pizzeria.service.MenuServiceFactory;
-import fr.pizzeria.service.UpdatePizzaService;
 
+/**
+ * User interface in console mode for the administration of a pizzeria.
+ * @author Haroun
+ *
+ */
 public class PizzeriaAdminConsoleApp {
 
 	/**
@@ -19,17 +18,12 @@ public class PizzeriaAdminConsoleApp {
 	 * @param args No arguments used.
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		//Generate a Pizza Array to use in the app.
 
 		IPizzaDao dao = new PizzaMemDao();
 		
 		MenuServiceFactory menuFactory =new MenuServiceFactory();
 
-		Scanner scanner = new Scanner(System.in);
-		
-		
+		Scanner scanner = new Scanner(System.in);		
 
 		while(true){
 			System.out.println("*****Pizzeria Administration*****");
@@ -47,7 +41,6 @@ public class PizzeriaAdminConsoleApp {
 			} else if (menuFactory.choseOption(choice) != null){
 				menuFactory.choseOption(choice).executeUC(dao, scanner);
 			}
-
 		}
 		System.out.println("Good bye :'( ");
 	}

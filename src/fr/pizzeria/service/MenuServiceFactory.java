@@ -1,5 +1,10 @@
 package fr.pizzeria.service;
 
+/**
+ * Factory for the Menu services.
+ * @author Haroun
+ *
+ */
 public class MenuServiceFactory {
 
 	public MenuService choseOption(int choice){

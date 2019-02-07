@@ -2,6 +2,11 @@ package fr.pizzeria.dao;
 
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Dao for pizzas stored in a Java array.
+ * @author Haroun
+ *
+ */
 public class PizzaMemDao implements IPizzaDao {
 
 	Pizza[] pizzaArray;
@@ -43,7 +48,8 @@ public class PizzaMemDao implements IPizzaDao {
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) {
-
+		
+		//Loop through the pizzaArray in memory and replace the pizza if it finds it.
 		if (this.pizzaExists(codePizza)){
 			for(int i = 0; i < this.pizzaArray.length; i++){
 				if (this.pizzaArray[i].equals(this.findPizzaByCode(codePizza))){
@@ -62,17 +68,22 @@ public class PizzaMemDao implements IPizzaDao {
 	public void deletePizza(String codePizza) {
 
 		if (this.pizzaExists(codePizza)){
-
+			
+			//Temp array to move the array minus one pizza.
 			Pizza[] pizzaArrayTemp = new Pizza[this.pizzaArray.length - 1];
+			
+			//Bool to tell where we are in the array comparatively to the index of the pizza to delete.
 			boolean leftOfPizzaInArray = true;
 
 			for(int i = 0; i < this.pizzaArray.length; i++){
-
+				
+				//Jumps to the next step if we are on the pizza to delete
 				if(this.pizzaArray[i].getCode().equals(codePizza)){
 					leftOfPizzaInArray = false;
 					continue;
 				}
 				
+				//Fill the temp array, different if we are before or after the pizza to delete.
 				if(leftOfPizzaInArray){
 					pizzaArrayTemp[i] = this.pizzaArray[i];
 				} else {
