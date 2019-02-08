@@ -2,8 +2,8 @@ package fr.pizzeria.service;
 
 import java.util.Scanner;
 
-import fr.pizzaria.exception.StockageException;
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.StockageException;
 
 /**
  * Abstract class for Menu service.

@@ -7,9 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.pizzaria.exception.StockageException;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMemDao;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaMemDaoTest {

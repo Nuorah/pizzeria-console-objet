@@ -1,4 +1,4 @@
-package fr.pizzaria.exception;
+package fr.pizzeria.exception;
 
 public class UpdatePizzaException extends StockageException {
 	

@@ -2,8 +2,8 @@ package fr.pizzeria.service;
 
 import java.util.Scanner;
 
-import fr.pizzaria.exception.UpdatePizzaException;
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 public class UpdatePizzaService extends MenuService {

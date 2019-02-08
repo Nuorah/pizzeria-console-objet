@@ -3,9 +3,9 @@ package fr.pizzeria.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.pizzaria.exception.DeletePizzaException;
-import fr.pizzaria.exception.SavePizzaException;
-import fr.pizzaria.exception.UpdatePizzaException;
+import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 /**

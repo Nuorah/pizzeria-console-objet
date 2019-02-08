@@ -2,10 +2,10 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
-import fr.pizzaria.exception.StockageException;
-import fr.pizzaria.exception.UpdatePizzaException;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMemDao;
+import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.service.MenuServiceFactory;
 
 /**
