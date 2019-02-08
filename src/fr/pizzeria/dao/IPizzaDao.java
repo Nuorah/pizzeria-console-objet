@@ -2,6 +2,9 @@ package fr.pizzeria.dao;
 
 import java.util.List;
 
+import fr.pizzaria.exception.DeletePizzaException;
+import fr.pizzaria.exception.SavePizzaException;
+import fr.pizzaria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -19,29 +22,35 @@ public interface IPizzaDao {
 	/**
 	 * Saves a new Pizza object.
 	 * @param pizza A Pizza object to save.
+	 * @throws SavePizzaException 
+	 * @throws PizzaExistException 
 	 */
-	void saveNewPizza(Pizza pizza);
+	void saveNewPizza(Pizza pizza) throws SavePizzaException;
 	/**
 	 * Change a Pizza object identified by its attribute code.
 	 * @param codePizza The code attribute of the Pizza Object to change.
 	 * @param pizza The Pizza object to replace the other one with.
+	 * @throws UpdatePizzaException 
 	 */
-	void updatePizza(String codePizza, Pizza pizza);
+	void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException;
 	/**
 	 * Deletes a Pizza Object.
 	 * @param codePizza The code attribute of the Pizza Object to delete.
+	 * @throws DeletePizzaException 
 	 */
-	void deletePizza(String codePizza);
+	void deletePizza(String codePizza) throws DeletePizzaException;
 	/**
 	 * Finds a Pizza Object with its attribute code.
 	 * @param codePizza The code attribute of the Pizza Object to find.
 	 * @return The Pizza object with the code codePizza.
+	 * @throws PizzaExistException 
 	 */
 	Pizza findPizzaByCode(String codePizza);
 	/**
 	 * Tells if a Pizza object exists in data by its code attribute.
 	 * @param codePizza The code attribute of the Pizza object to find.
 	 * @return true if the Pizza exists in data, false if not.
+	 * @throws PizzaExistException 
 	 */
 	boolean pizzaExists(String codePizza);
 
