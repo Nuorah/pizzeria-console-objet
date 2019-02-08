@@ -16,14 +16,14 @@ public class PizzaMemDao implements IPizzaDao {
 
 	public PizzaMemDao() {
 		pizzaList = new ArrayList<Pizza>();
-		pizzaList.add(new Pizza("PEP", "Pépéroni", 12.5));
+		/*pizzaList.add(new Pizza("PEP", "Pépéroni", 12.5));
 		pizzaList.add(new Pizza("MAR", "Margherita", 14.0));
 		pizzaList.add(new Pizza("REIN", "La Reine", 11.5));
 		pizzaList.add(new Pizza("FRO", "La 4 fromages", 12.0));
 		pizzaList.add(new Pizza("CAN", "La cannibale", 12.5));
 		pizzaList.add(new Pizza("SAV", "La savoyarde", 13.0));
 		pizzaList.add(new Pizza("ORI", "L'orientale", 13.5));
-		pizzaList.add(new Pizza("IND", "L'indienne", 14.0));
+		pizzaList.add(new Pizza("IND", "L'indienne", 14.0));*/
 	}
 
 	@Override
