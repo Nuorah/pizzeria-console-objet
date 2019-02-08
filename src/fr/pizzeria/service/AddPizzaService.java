@@ -2,6 +2,7 @@ package fr.pizzeria.service;
 
 import java.util.Scanner;
 
+import fr.pizzaria.exception.SavePizzaException;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
@@ -19,9 +20,14 @@ public class AddPizzaService extends MenuService {
 		System.out.println("Please write the price : ");
 		double price = scanner.nextDouble();
 
-		dao.saveNewPizza(new Pizza(code, libelle, price));
-		
+		try {
+			dao.saveNewPizza(new Pizza(code, libelle, price));
+		} catch (SavePizzaException e) {
+			System.out.println();
+			System.err.println(e);
+			System.out.println();
+		}		
 	}
 
-	
+
 }

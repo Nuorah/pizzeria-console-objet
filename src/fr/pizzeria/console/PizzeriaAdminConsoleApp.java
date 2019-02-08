@@ -2,6 +2,8 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
+import fr.pizzaria.exception.StockageException;
+import fr.pizzaria.exception.UpdatePizzaException;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.service.MenuServiceFactory;
@@ -16,8 +18,9 @@ public class PizzeriaAdminConsoleApp {
 	/**
 	 * Main method, launches the menu and allow the user to interact with the list of pizzas.
 	 * @param args No arguments used.
+	 * @throws StockageException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws StockageException {
 
 		IPizzaDao dao = new PizzaMemDao();
 
@@ -37,7 +40,13 @@ public class PizzeriaAdminConsoleApp {
 			if (choice == 99){
 				break;
 			} else if (MenuServiceFactory.getService(choice) != null){
+				try {
 				MenuServiceFactory.getService(choice).executeUC(dao, scanner);
+				} catch (UpdatePizzaException e){
+					System.out.println();
+					System.err.println(e);
+					System.out.println();
+				}
 			}
 		}
 		System.out.println("Good bye :'( ");

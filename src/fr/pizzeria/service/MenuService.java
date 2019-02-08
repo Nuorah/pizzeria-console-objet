@@ -2,6 +2,8 @@ package fr.pizzeria.service;
 
 import java.util.Scanner;
 
+import fr.pizzaria.exception.StockageException;
+import fr.pizzaria.exception.UpdatePizzaException;
 import fr.pizzeria.dao.IPizzaDao;
 
 /**
@@ -11,6 +13,6 @@ import fr.pizzeria.dao.IPizzaDao;
  */
 public abstract class MenuService {
 	
-	public abstract void executeUC(IPizzaDao dao, Scanner scanner);
+	public abstract void executeUC(IPizzaDao dao, Scanner scanner) throws StockageException;
 
 }
