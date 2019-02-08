@@ -58,7 +58,6 @@ public class PizzaMemDaoTest {
 	
 	@Test
 	public void testDeletePizza() {
-
 		// We create a new pizza
 		dao.saveNewPizza(new Pizza("1stPizza", "1stPizza", 10));
 		// We delete this pizza
@@ -74,7 +73,6 @@ public class PizzaMemDaoTest {
 		// The first pizza must not be there but the second pizza must still be there
 		assertTrue("1st pizza must be deleted", dao.findPizzaByCode("1stPizza") == null);
 		assertTrue("2nd pizza must still be there", dao.findPizzaByCode("2ndPizza") != null);
-		fail("Hahahahhahahah");
 	}
 
 }
