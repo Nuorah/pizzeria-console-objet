@@ -23,7 +23,6 @@ public interface IPizzaDao {
 	 * Saves a new Pizza object.
 	 * @param pizza A Pizza object to save.
 	 * @throws SavePizzaException 
-	 * @throws PizzaExistException 
 	 */
 	void saveNewPizza(Pizza pizza) throws SavePizzaException;
 	/**
@@ -43,14 +42,12 @@ public interface IPizzaDao {
 	 * Finds a Pizza Object with its attribute code.
 	 * @param codePizza The code attribute of the Pizza Object to find.
 	 * @return The Pizza object with the code codePizza.
-	 * @throws PizzaExistException 
 	 */
 	Pizza findPizzaByCode(String codePizza);
 	/**
 	 * Tells if a Pizza object exists in data by its code attribute.
 	 * @param codePizza The code attribute of the Pizza object to find.
 	 * @return true if the Pizza exists in data, false if not.
-	 * @throws PizzaExistException 
 	 */
 	boolean pizzaExists(String codePizza);
 
