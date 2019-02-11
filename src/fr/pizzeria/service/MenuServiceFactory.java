@@ -6,7 +6,7 @@ package fr.pizzeria.service;
  *
  */
 public class MenuServiceFactory {
-	
+
 	/**
 	 * 
 	 * @param choice User choice.

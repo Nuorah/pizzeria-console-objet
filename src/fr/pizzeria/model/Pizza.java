@@ -11,6 +11,7 @@ public class Pizza implements Comparable<Pizza>{
 	String libelle;
 	double prix;
 	static int count = 0;
+	PizzaCategory category;
 	
 	/**
 	 * Constructor for the class Pizza without imposing an id. An id is generated with a 
@@ -19,9 +20,10 @@ public class Pizza implements Comparable<Pizza>{
 	 * of the name of the pizza.
 	 * @param libelle String. Complete name of the pizza.
 	 * @param prix Double. Price of the pizza in euros.
+	 * @param category TODO
 	 */
 	
-	public Pizza(String code, String libelle, double prix){
+	public Pizza(String code, String libelle, double prix, PizzaCategory category){
 		
 		id = count;
 		count++;
@@ -29,6 +31,7 @@ public class Pizza implements Comparable<Pizza>{
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.category = category;
 	}
 	
 	/**
@@ -38,12 +41,14 @@ public class Pizza implements Comparable<Pizza>{
 	 * of the name of the pizza.
 	 * @param libelle String. Complete name of the pizza.
 	 * @param prix double. Price of the pizza in euros.
+	 * @param category TODO
 	 */
-	public Pizza(int id, String code, String libelle, double prix){
+	public Pizza(int id, String code, String libelle, double prix, PizzaCategory category){
 		this.id = id;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.category = category;
 	}
 	
 	/**
@@ -66,7 +71,7 @@ public class Pizza implements Comparable<Pizza>{
 	}
 	
 	public String toString(){
-		return this.code + " -> " + this.libelle + " (" + this.prix + "0€)";
+		return this.code + " -> " + "(" + category.getCategory() + ") " + this.libelle + " (" + this.prix + "0€)";
 	}
 
 	@Override

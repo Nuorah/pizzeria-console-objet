@@ -36,12 +36,12 @@ public class PizzeriaAdminConsoleApp {
 
 			int choice = scanner.nextInt();
 			scanner.nextLine();
-			
+
 			if (choice == 99){
 				break;
 			} else if (MenuServiceFactory.getService(choice) != null){
 				try {
-				MenuServiceFactory.getService(choice).executeUC(dao, scanner);
+					MenuServiceFactory.getService(choice).executeUC(dao, scanner);
 				} catch (UpdatePizzaException e){
 					System.out.println();
 					System.err.println(e);
