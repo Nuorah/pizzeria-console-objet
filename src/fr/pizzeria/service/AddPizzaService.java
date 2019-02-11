@@ -5,6 +5,7 @@ import java.util.Scanner;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.model.PizzaCategory;
 
 public class AddPizzaService extends MenuService {
 
@@ -17,17 +18,16 @@ public class AddPizzaService extends MenuService {
 		System.out.println("Please write the name : ");
 		String libelle = scanner.nextLine();
 
-		System.out.println("Please write the price : ");
-		double price = scanner.nextDouble();
+		double price = this.getPrice(scanner);
+
+		PizzaCategory category = this.getCategory(scanner);		
 
 		try {
-			dao.saveNewPizza(new Pizza(code, libelle, price));
+			dao.saveNewPizza(new Pizza(code, libelle, price, category));
 		} catch (SavePizzaException e) {
 			System.out.println();
 			System.err.println(e);
 			System.out.println();
 		}		
 	}
-
-
 }

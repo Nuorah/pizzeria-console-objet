@@ -32,7 +32,7 @@ public class PizzaMemDaoTest {
 		assertTrue("Dao must be empty", dao.findAllPizzas().isEmpty());
 		
 		//We add a new pizza
-		dao.saveNewPizza(new Pizza("PIZ1", "1stPizza", 10));
+		dao.saveNewPizza(new Pizza("PIZ1", "1stPizza", 10, null));
 		// The new pizza must be here
 		assertFalse("There must a new Pizza", dao.findAllPizzas().isEmpty());
 		// It must be the only pizza
@@ -41,7 +41,7 @@ public class PizzaMemDaoTest {
 		assertTrue("Pizza must have the right code", dao.findPizzaByCode("PIZ1").getCode() == "PIZ1");
 		
 		// We add a second pizza
-		dao.saveNewPizza(new Pizza("PIZ2", "2ndPizza", 20));
+		dao.saveNewPizza(new Pizza("PIZ2", "2ndPizza", 20, null));
 		// There must be two pizzas
 		assertTrue("There must be another pizza", dao.findAllPizzas().size() == 2);
 		//The first pizza must not have changed
@@ -51,11 +51,11 @@ public class PizzaMemDaoTest {
 	@Test
 	public void testUpdatePizza() throws StockageException {
 		// We add a new pizza
-		dao.saveNewPizza(new Pizza("PIZ1", "1stPizza", 10));		
+		dao.saveNewPizza(new Pizza("PIZ1", "1stPizza", 10, null));		
 		// We update this pizza with the same code
-		dao.updatePizza("PIZ1", new Pizza("PIZ1", "2stPizza", 20));
+		dao.updatePizza("PIZ1", new Pizza("PIZ1", "2stPizza", 20, null));
 		// We update this pizza with a different code
-		dao.updatePizza("PIZ1", new Pizza("PIZ2", "2stPizza", 20));
+		dao.updatePizza("PIZ1", new Pizza("PIZ2", "2stPizza", 20, null));
 		// We must find this new pizza
 		assertTrue("Pizza code must have changed", dao.findPizzaByCode("PIZ2") != null);
 		// We must not find the old pizza
@@ -65,15 +65,15 @@ public class PizzaMemDaoTest {
 	@Test
 	public void testDeletePizza() throws StockageException {
 		// We create a new pizza
-		dao.saveNewPizza(new Pizza("PIZ1", "1stPizza", 10));
+		dao.saveNewPizza(new Pizza("PIZ1", "1stPizza", 10, null));
 		// We delete this pizza
 		dao.deletePizza("PIZ1");
 		// The pizza must be deleted ie the dao must be empty
 		assertTrue("Dao must be empty", dao.findAllPizzas().isEmpty());
 		
 		// We create two new pizzas
-		dao.saveNewPizza(new Pizza("PIZ1", "1stPizza", 10));
-		dao.saveNewPizza(new Pizza("PIZ2", "2stPizza", 10));
+		dao.saveNewPizza(new Pizza("PIZ1", "1stPizza", 10, null));
+		dao.saveNewPizza(new Pizza("PIZ2", "2stPizza", 10, null));
 		// We delete the first pizza
 		dao.deletePizza("PIZ1");
 		// The first pizza must not be there but the second pizza must still be there
