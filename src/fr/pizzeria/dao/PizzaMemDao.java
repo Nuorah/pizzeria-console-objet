@@ -29,7 +29,7 @@ public class PizzaMemDao implements IPizzaDao {
 		pizzaList.add(new Pizza("ORI", "L'orientale", 13.5, PizzaCategory.MEAT));
 		pizzaList.add(new Pizza("IND", "L'indienne", 14.0, PizzaCategory.MEAT));*/
 	}
-
+	
 	@Override
 	public List<Pizza> findAllPizzas() {
 		return this.pizzaList;

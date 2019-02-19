@@ -3,6 +3,7 @@ package fr.pizzeria.console;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.dao.PizzaDataBaseDao;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.exception.UpdatePizzaException;
@@ -22,7 +23,8 @@ public class PizzeriaAdminConsoleApp {
 	 */
 	public static void main(String[] args) throws StockageException {
 
-		IPizzaDao dao = new PizzaMemDao();
+		IPizzaDao dao = new PizzaDataBaseDao();
+		
 
 		Scanner scanner = new Scanner(System.in);		
 

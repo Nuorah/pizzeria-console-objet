@@ -35,3 +35,6 @@ Thumbs.db
 
 # jME (binaries)
 *.so
+
+#Maven
+target/
