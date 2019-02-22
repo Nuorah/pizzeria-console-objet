@@ -23,7 +23,7 @@ public class PizzeriaAdminConsoleApp {
 	 */
 	public static void main(String[] args) throws StockageException {
 
-		IPizzaDao dao = new PizzaDataBaseDao();
+		IPizzaDao dao = new PizzaMemDao();
 		
 
 		Scanner scanner = new Scanner(System.in);		
