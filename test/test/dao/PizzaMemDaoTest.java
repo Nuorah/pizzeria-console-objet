@@ -3,6 +3,8 @@ package test.dao;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,14 +13,19 @@ import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.model.PizzaCategory;
 
 public class PizzaMemDaoTest {
 	
 	IPizzaDao dao;
+	List<Pizza> pizzaList; 
 	
 	@Before
 	public void setUp() throws Exception {
 		dao = new PizzaMemDao();
+		dao.saveNewPizza(new Pizza("PEP", "Pépéroni", 12.5, PizzaCategory.MEAT));
+		dao.saveNewPizza(new Pizza("REIN", "La Reine", 11.5, PizzaCategory.MEAT));
+		dao.saveNewPizza(new Pizza("FRO", "La 4 fromages", 12.0, PizzaCategory.NO_MEAT));
 	}
 	
 	@After

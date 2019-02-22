@@ -66,6 +66,14 @@ public class Pizza implements Comparable<Pizza>{
 		return this.id;
 	}
 	
+	public double getPrix() {
+		return prix;
+	}
+
+	public PizzaCategory getCategory() {
+		return category;
+	}
+
 	public String getLibelle(){
 		return this.libelle;
 	}
